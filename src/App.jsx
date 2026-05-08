@@ -648,12 +648,7 @@ function CompleteScreen({xp,title,m,onContinue}){
 }
 
 export default function App(){
-  useEffect(()=>{
-    const s=document.createElement("style");
-    s.textContent=CSS;
-    document.head.appendChild(s);
-    return()=>document.head.removeChild(s);
-  },[]);
+
 
   const [screen,setScreen]=useState("home");
   const [mod,setMod]=useState(null);
@@ -664,12 +659,13 @@ export default function App(){
   const hearts=5,streak=3;
   const total=MODULES.reduce((a,m)=>a+m.lessons.length,0);
 
-  return <div style={{display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100vh",background:"#e5e5e5"}}>
-    <div style={{width:"100%",maxWidth:390,height:"100vh",maxHeight:760,borderRadius:36,border:"6px solid #1a237e",overflow:"hidden",boxShadow:"0 20px 60px rgba(0,0,0,.3)",position:"relative",background:"#fff"}}>
+  return <>
+    <style>{CSS}</style>
+    <div style={{width:"100%",height:"100%",minHeight:"100vh",background:"#fff",position:"relative",overflow:"hidden"}}>
       {screen==="home"&&<HomeScreen xp={xp} streak={streak} hearts={hearts} done={completed} total={total} onSelect={m=>{setMod(m);setScreen("module");}}/>}
       {screen==="module"&&<ModuleScreen m={mod} completed={completed} onBack={()=>setScreen("home")} onStart={l=>{setLesson(l);setScreen("lesson");}}/>}
       {screen==="lesson"&&<LessonScreen lesson={lesson} m={mod} onBack={()=>setScreen("module")} onDone={x=>{setLastXp(x);setScreen("complete");}}/>}
       {screen==="complete"&&<CompleteScreen xp={lastXp} title={lesson.title} m={mod} onContinue={()=>{setCompleted(p=>[...p,lesson.id]);setXp(p=>p+lastXp);setScreen("module");}}/>}
     </div>
-  </div>;
+  </>;
 }
