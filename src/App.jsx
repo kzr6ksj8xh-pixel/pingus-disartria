@@ -100,19 +100,29 @@ function Boca({ estado = "neutral", activa = false }) {
   /* ── FRUNCIR ── */
   if (estado === "pucker") return (
     <MouthBase label="FRUNCIR LABIOS 💋">
-      <g style={a ? { animation: "lipsPucker 1s ease-in-out infinite", transformOrigin: "150px 148px" } : {}}>
-        {/* Small oval opening */}
-        <ellipse cx="150" cy="152" rx="22" ry="18" fill="#1a0408" />
-        {/* Upper lip pucker */}
-        <path d="M 88 132 Q 120 112 150 116 Q 180 112 212 132 Q 180 140 150 140 Q 120 140 88 132 Z"
-          fill="#CC1133" />
-        {/* Lower lip pucker */}
-        <path d="M 88 132 Q 120 175 150 178 Q 180 175 212 132 Q 180 162 150 164 Q 120 162 88 132 Z"
-          fill="#CC1133" />
-        {/* Center line */}
-        <path d="M 120 134 Q 150 138 180 134" fill="none" stroke="#AA0022" strokeWidth="2.5" />
-        {/* Shine */}
-        <path d="M 108 122 Q 150 115 192 122" fill="none" stroke="rgba(255,180,180,.65)" strokeWidth="5" strokeLinecap="round" />
+      {/* Cheeks pushing in */}
+      <g style={a ? { animation: "lipsPucker .9s ease-in-out infinite", transformOrigin: "150px 150px" } : {}}>
+        {/* Cheek dimples effect */}
+        <ellipse cx="82" cy="148" rx="26" ry="20" fill="#FFBBCC" opacity={a?".45":".25"}/>
+        <ellipse cx="218" cy="148" rx="26" ry="20" fill="#FFBBCC" opacity={a?".45":".25"}/>
+        {/* Inner dark opening */}
+        <ellipse cx="150" cy="150" rx="18" ry="15" fill="#220008" />
+        {/* Lip ring - pucker shape */}
+        <ellipse cx="150" cy="150" rx="46" ry="42" fill="#CC1133" />
+        <ellipse cx="150" cy="150" rx="18" ry="15" fill="#220008" />
+        {/* Upper lip roll */}
+        <path d="M 104 132 Q 127 118 150 121 Q 173 118 196 132 Q 173 136 150 137 Q 127 136 104 132 Z"
+          fill="#DD2244" />
+        {/* Lower lip roll - fuller */}
+        <path d="M 104 168 Q 127 182 150 185 Q 173 182 196 168 Q 173 172 150 174 Q 127 172 104 168 Z"
+          fill="#DD2244" />
+        {/* Center crease */}
+        <ellipse cx="150" cy="150" rx="32" ry="4" fill="#BB0022" opacity=".5"/>
+        {/* Highlight upper */}
+        <path d="M 120 127 Q 150 120 180 127" fill="none" stroke="rgba(255,200,200,.8)" strokeWidth="5" strokeLinecap="round"
+          style={a?{animation:"shine 1.8s ease-in-out infinite"}:{}}/>
+        {/* Highlight lower */}
+        <path d="M 118 175 Q 150 183 182 175" fill="none" stroke="rgba(255,200,200,.5)" strokeWidth="4" strokeLinecap="round"/>
       </g>
     </MouthBase>
   );
@@ -120,54 +130,47 @@ function Boca({ estado = "neutral", activa = false }) {
   /* ── LENGUA ARRIBA ── */
   if (estado === "tongue_up") return (
     <MouthBase label="LENGUA ↑ ARRIBA">
-      {/* Oral cavity */}
-      <path d="M 55 130 Q 150 200 245 130 Q 200 180 150 185 Q 100 180 55 130 Z" fill="#2a0810" />
-      {/* Tongue moving up */}
+      <path d="M 45 128 Q 150 212 255 128 Q 205 185 150 192 Q 95 185 45 128 Z" fill="#1a0408" />
       <g style={a ? { animation: "tongueUp 1s ease-in-out infinite" } : {}}>
-        <ellipse cx="150" cy="148" rx="38" ry="30" fill="#D4607A" />
-        <ellipse cx="150" cy="140" rx="24" ry="18" fill="#E07090" />
+        {/* Tongue body - bigger */}
+        <ellipse cx="150" cy="160" rx="50" ry="36" fill="#C84060" />
+        <ellipse cx="150" cy="148" rx="38" ry="28" fill="#E0607A" />
+        <ellipse cx="150" cy="136" rx="24" ry="20" fill="#F07090" />
         {/* Tongue tip */}
-        <ellipse cx="150" cy="128" rx="14" ry="12" fill="#E07090" />
-        {/* Center line */}
-        <path d="M 150 128 Q 150 160 150 170" fill="none" stroke="#C0506A" strokeWidth="2.5" strokeLinecap="round" />
+        <ellipse cx="150" cy="122" rx="16" ry="14" fill="#F080A0" />
+        {/* Center groove */}
+        <path d="M 150 118 Q 150 158 150 175" fill="none" stroke="#A03050" strokeWidth="3.5" strokeLinecap="round" />
+        {/* Shine */}
+        <ellipse cx="140" cy="138" rx="8" ry="12" fill="rgba(255,180,200,.35)" transform="rotate(-15,140,138)"/>
       </g>
-      {/* Upper teeth (static) */}
-      <path d="M 55 130 Q 150 120 245 130 Q 215 145 150 147 Q 85 145 55 130 Z" fill="white" />
-      {[0,1,2,3,4,5,6].map(i => <line key={i} x1={60+i*28} y1="130" x2={59+i*28} y2="147"
-        stroke="#DDD" strokeWidth="2" />)}
-      {/* Lips */}
-      <path d="M 42 122 Q 96 96 150 100 Q 204 96 258 122 Q 208 130 150 130 Q 92 130 42 122 Z" fill="#CC1133" />
-      <path d="M 42 122 Q 96 210 150 215 Q 204 210 258 122 Q 215 148 150 150 Q 85 148 42 122 Z" fill="#CC1133" />
-      <path d="M 82 108 Q 150 101 218 108" fill="none" stroke="rgba(255,180,180,.6)" strokeWidth="5" strokeLinecap="round" />
+      <path d="M 45 128 Q 150 116 255 128 Q 218 144 150 146 Q 82 144 45 128 Z" fill="white" />
+      {[0,1,2,3,4,5,6,7].map(i => <line key={i} x1={50+i*26} y1="128" x2={49+i*26} y2="146" stroke="#DDD" strokeWidth="2.5" />)}
+      <path d="M 30 118 Q 90 88 150 92 Q 210 88 270 118 Q 214 128 150 128 Q 86 128 30 118 Z" fill="#CC1133" />
+      <path d="M 30 118 Q 90 215 150 220 Q 210 215 270 118 Q 218 152 150 154 Q 82 152 30 118 Z" fill="#CC1133" />
+      <path d="M 76 104 Q 150 96 224 104" fill="none" stroke="rgba(255,180,180,.7)" strokeWidth="6" strokeLinecap="round" />
     </MouthBase>
   );
 
   /* ── LENGUA ABAJO ── */
   if (estado === "tongue_down") return (
     <MouthBase label="LENGUA ↓ ABAJO">
-      <path d="M 55 130 Q 150 200 245 130 Q 200 175 150 182 Q 100 175 55 130 Z" fill="#2a0810" />
-      {/* Lower teeth */}
-      <g style={a ? { animation: "jawDrop 1.5s ease-in-out infinite", transformOrigin: "150px 165px" } : {}}>
-        <path d="M 68 158 Q 150 170 232 158 Q 200 178 150 180 Q 100 178 68 158 Z" fill="white" />
-        {[0,1,2,3,4,5,6].map(i => <line key={i} x1={72+i*25} y1="158" x2={71+i*25} y2="172"
-          stroke="#DDD" strokeWidth="2" />)}
-        {/* Tongue going down */}
-        <g style={a ? { animation: "tongueDown 1s ease-in-out infinite" } : {}}>
-          <ellipse cx="150" cy="175" rx="36" ry="22" fill="#E07090" />
-          <path d="M 150 165 Q 150 185 150 195" fill="none" stroke="#C0506A" strokeWidth="2.5" strokeLinecap="round" />
-        </g>
-        <path d="M 68 158 Q 150 148 232 158" fill="none" stroke="#DDD" strokeWidth="1" />
+      <path d="M 45 128 Q 150 212 255 128 Q 205 185 150 192 Q 95 185 45 128 Z" fill="#1a0408" />
+      <path d="M 45 128 Q 150 116 255 128 Q 218 144 150 146 Q 82 144 45 128 Z" fill="white" />
+      {[0,1,2,3,4,5,6,7].map(i => <line key={i} x1={50+i*26} y1="128" x2={49+i*26} y2="146" stroke="#DDD" strokeWidth="2.5" />)}
+      <g style={a ? { animation: "tongueDown 1s ease-in-out infinite" } : {}}>
+        <ellipse cx="150" cy="175" rx="50" ry="32" fill="#C84060" />
+        <ellipse cx="150" cy="183" rx="38" ry="24" fill="#E0607A" />
+        <ellipse cx="150" cy="190" rx="24" ry="16" fill="#F07090" />
+        <path d="M 150 170 Q 150 192 150 198" fill="none" stroke="#A03050" strokeWidth="3.5" strokeLinecap="round" />
+        <ellipse cx="140" cy="178" rx="8" ry="10" fill="rgba(255,180,200,.35)" transform="rotate(-15,140,178)"/>
       </g>
-      <path d="M 55 130 Q 150 120 245 130 Q 215 145 150 147 Q 85 145 55 130 Z" fill="white" />
-      {[0,1,2,3,4,5,6].map(i => <line key={i} x1={60+i*28} y1="130" x2={59+i*28} y2="147"
-        stroke="#DDD" strokeWidth="2" />)}
-      <path d="M 42 122 Q 96 96 150 100 Q 204 96 258 122 Q 208 130 150 130 Q 92 130 42 122 Z" fill="#CC1133" />
-      <path d="M 42 122 Q 96 210 150 215 Q 204 210 258 122 Q 215 148 150 150 Q 85 148 42 122 Z" fill="#CC1133" />
-      <path d="M 82 108 Q 150 101 218 108" fill="none" stroke="rgba(255,180,180,.6)" strokeWidth="5" strokeLinecap="round" />
+      <path d="M 30 118 Q 90 88 150 92 Q 210 88 270 118 Q 214 128 150 128 Q 86 128 30 118 Z" fill="#CC1133" />
+      <path d="M 30 118 Q 90 215 150 220 Q 210 215 270 118 Q 218 152 150 154 Q 82 152 30 118 Z" fill="#CC1133" />
+      <path d="M 76 104 Q 150 96 224 104" fill="none" stroke="rgba(255,180,180,.7)" strokeWidth="6" strokeLinecap="round" />
     </MouthBase>
   );
 
-  /* ── LENGUA LADO ── */
+    /* ── LENGUA LADO ── */
   if (estado === "tongue_side") return (
     <MouthBase label="LENGUA ⟵⟶ LADO A LADO">
       <path d="M 55 130 Q 150 200 245 130 Q 200 178 150 182 Q 100 178 55 130 Z" fill="#2a0810" />
@@ -490,7 +493,7 @@ const MODULES = [
       {
         id:"l2", title:"Motor de labios", xp:15,
         steps:[
-          {instruction:"Escucha el ejemplo y vibra los labios",visual:"pa", tip:"Relaja completamente los labios", action:"Brrrrr — 5 repeticiones", duration:20, hasAudio:true, audioText:"brrrrr brrrrr brrrrr brrrrr brrrrr"},
+          {instruction:"Escucha el ejemplo y vibra los labios",visual:"pa", tip:"Relaja completamente los labios", action:"Brrrrr — 5 repeticiones", duration:20, hasAudio:true, audioText:"brrrr... brrrr... brrrr... brrrr... brrrr"},
           {instruction:"Repite PA-PA-PA", visual:"pa", tip:"Acentúa con fuerza labial", action:"PA-PA-PA × 10", duration:8},
           {instruction:"Repite BA-BA-BA", visual:"ba", tip:"Siente la vibración", action:"BA-BA-BA × 10", duration:8},
         ],
@@ -895,6 +898,72 @@ function VoicePanel({lesson,m}){
   </div>;
 }
 
+
+/* ═══════ STEP RECORDER ═══════ */
+function StepRecorder({m, stepAudio, lessonExample}){
+  const [recOn,setRecOn]=useState(false);
+  const [recBlob,setRecBlob]=useState(null);
+  const [playing,setPlaying]=useState(false);
+  const [recSec,setRecSec]=useState(0);
+  const mrRef=useRef(null),chunkRef=useRef([]),timerRef=useRef(null),audRef=useRef(null);
+
+  const toggleRec=async()=>{
+    if(recOn){if(mrRef.current?.state==="recording")mrRef.current.stop();clearInterval(timerRef.current);setRecOn(false);return;}
+    try{
+      const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+      chunkRef.current=[];
+      const mr=new MediaRecorder(stream);
+      mr.ondataavailable=e=>{if(e.data.size>0)chunkRef.current.push(e.data);};
+      mr.onstop=()=>{setRecBlob(new Blob(chunkRef.current,{type:"audio/webm"}));stream.getTracks().forEach(t=>t.stop());setRecOn(false);};
+      mr.start();mrRef.current=mr;setRecOn(true);setRecSec(0);
+      timerRef.current=setInterval(()=>setRecSec(p=>p+1),1000);
+    }catch{alert("No se pudo acceder al micrófono.");}
+  };
+  const playEx=()=>{ doSpeak(stepAudio||lessonExample||"",0.48); };
+  const playRec=()=>{
+    if(!recBlob)return;
+    if(audRef.current){audRef.current.pause();audRef.current=null;setPlaying(false);return;}
+    const url=URL.createObjectURL(recBlob);
+    const a=new Audio(url);audRef.current=a;setPlaying(true);
+    a.play();a.onended=()=>{setPlaying(false);audRef.current=null;URL.revokeObjectURL(url);};
+  };
+  useEffect(()=>()=>{clearInterval(timerRef.current);window.speechSynthesis?.cancel();},[]);
+  const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
+
+  return <div style={{borderRadius:16,overflow:"hidden",border:`2.5px solid ${m.color}`,borderBottom:`5px solid ${m.dark}`,width:"100%"}}>
+    <div style={{padding:"8px 14px",background:`${m.color}18`,textAlign:"center"}}>
+      <div style={{fontSize:11,fontWeight:900,color:m.dark,textTransform:"uppercase",letterSpacing:2}}>
+        🎙️ Graba y escucha tu voz
+      </div>
+    </div>
+    <div style={{background:"#fff",padding:"10px 12px",display:"flex",flexDirection:"column",gap:7}}>
+      <button className="btn" onClick={playEx}
+        style={{background:m.color,boxShadow:`0 4px 0 ${m.dark}`,fontSize:13,
+          display:"flex",alignItems:"center",gap:10,padding:"10px 14px"}}>
+        <span style={{fontSize:18}}>🔊</span>
+        <span style={{flex:1,textAlign:"left"}}>Escuchar ejemplo</span>
+      </button>
+      <button className="btn" onClick={toggleRec}
+        style={{background:recOn?"#EF4444":"white",color:recOn?"white":"#EF4444",
+          border:"2.5px solid #EF4444",borderBottom:`5px solid ${recOn?"#C62828":"#FFCDD2"}`,
+          boxShadow:"none",fontSize:13,display:"flex",alignItems:"center",gap:10,padding:"10px 14px",
+          animation:recOn?"glowRed 1.5s infinite":"none"}}>
+        <span style={{fontSize:18}}>{recOn?"⏹":"🎙️"}</span>
+        <span style={{flex:1,textAlign:"left"}}>{recOn?`Grabando… ${fmt(recSec)}`:"Grabar mi voz"}</span>
+        {recOn&&<WaveBars active color="#EF4444"/>}
+      </button>
+      {recBlob&&<button className="btn" onClick={playRec}
+        style={{background:playing?m.dark:m.bg,color:playing?"white":m.dark,
+          border:`2.5px solid ${m.color}`,borderBottom:`5px solid ${m.dark}`,
+          boxShadow:"none",fontSize:13,display:"flex",alignItems:"center",gap:10,padding:"10px 14px"}}>
+        <span style={{fontSize:18}}>{playing?"⏹":"▶️"}</span>
+        <span style={{flex:1,textAlign:"left"}}>{playing?"Reproduciendo…":"▶ Escuchar mi grabación"}</span>
+        {playing&&<WaveBars active/>}
+      </button>}
+    </div>
+  </div>;
+}
+
 /* ═══════ LESSON SCREEN ═══════ */
 function LessonScreen({lesson,m,onBack,onDone}){
   if(lesson.isBreathing) return <BreathingEx lesson={lesson} m={m} onBack={onBack} onDone={onDone}/>;
@@ -962,13 +1031,8 @@ function LessonScreen({lesson,m,onBack,onDone}){
       )}
       {phase==="done"&&(
         <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:13,animation:"slideUp .4s ease"}}>
-          {m.isVoice&&lesson.example&&(
-            <div className="card" style={{padding:12,width:"100%",textAlign:"center",background:`${m.bg}`}}>
-              <div style={{fontSize:13,color:m.dark,fontWeight:800,marginBottom:8}}>
-                🎙️ Antes de continuar: escucha tu grabación y compara con el ejemplo
-              </div>
-              <VoicePanel lesson={lesson} m={m}/>
-            </div>
+          {(m.isVoice&&lesson.example||lesson.hasSyllableAudio)&&(
+            <StepRecorder m={m} stepAudio={step.audio} lessonExample={lesson.example}/>
           )}
           <div style={{textAlign:"center"}}>
             <div style={{fontSize:50,animation:"star 1s ease 1"}}>⭐</div>
@@ -1089,60 +1153,44 @@ function HomeScreen({xp,streak,done,total,completed,onSelect}){
       <div style={{fontSize:11,fontWeight:900,color:"#9E9E9E",textTransform:"uppercase",letterSpacing:3,marginBottom:9}}>
         Módulos de ejercicios
       </div>
-      {/* 2 columns for first 4 */}
-      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:9,marginBottom:9}}>
-        {MODULES.slice(0,4).map((m,i)=>{
+      {/* 2x3 GRID — all squares, Afasia Lab style */}
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+        {MODULES.map((m,i)=>{
           const d=m.lessons.filter(l=>completed.includes(l.id)).length;
           const pct=m.lessons.length>0?d/m.lessons.length:0;
           return <button key={m.id} onClick={()=>!m.isComingSoon&&onSelect(m)}
-            style={{background:m.bg,borderRadius:18,padding:"16px 12px",textAlign:"center",
-              border:`2.5px solid ${m.color}`,borderBottom:`5px solid ${m.dark}`,
+            style={{background:m.bg,borderRadius:20,padding:"18px 10px 14px",textAlign:"center",
+              aspectRatio:"1",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between",
+              border:`3px solid ${m.color}`,borderBottom:`6px solid ${m.dark}`,
               cursor:m.isComingSoon?"not-allowed":"pointer",
-              transition:"transform .1s,border-bottom-width .1s",
-              opacity:m.isComingSoon?.55:1,
-              animation:`slideUp .45s cubic-bezier(.34,1.56,.64,1) ${i*.07}s both`}}
-            onTouchStart={e=>{if(!m.isComingSoon)e.currentTarget.style.transform="translateY(3px)";}}
-            onTouchEnd={e=>{e.currentTarget.style.transform="translateY(0)";}}>
-            <div style={{fontSize:38,marginBottom:7,animation:"float 2.5s ease-in-out infinite",animationDelay:`${i*.25}s`}}>
+              opacity:m.isComingSoon?.6:1,
+              animation:`slideUp .45s cubic-bezier(.34,1.56,.64,1) ${i*.06}s both`,
+              WebkitAppearance:"none"}}
+            onTouchStart={e=>{if(!m.isComingSoon){e.currentTarget.style.transform="translateY(4px)";e.currentTarget.style.borderBottomWidth="2px";}}}
+            onTouchEnd={e=>{e.currentTarget.style.transform="";e.currentTarget.style.borderBottomWidth="";}}>
+            {/* Big emoji icon */}
+            <div style={{fontSize:48,lineHeight:1,animation:"float 2.5s ease-in-out infinite",animationDelay:`${i*.25}s`,
+              filter:`drop-shadow(0 4px 8px ${m.color}66)`}}>
               {m.emoji}
             </div>
-            <div style={{fontSize:14,fontWeight:900,color:m.dark,marginBottom:3}}>{m.title}</div>
-            <div style={{fontSize:10,color:m.dark+"99",lineHeight:1.3,marginBottom:7}}>{m.desc}</div>
-            <div style={{height:6,background:`${m.color}33`,borderRadius:3,overflow:"hidden"}}>
-              <div style={{height:"100%",background:m.color,borderRadius:3,width:`${pct*100}%`,transition:"width .5s"}}/>
+            {/* Title - big bold */}
+            <div>
+              <div style={{fontSize:17,fontWeight:900,color:m.dark,lineHeight:1.1,marginBottom:4}}>{m.title}</div>
+              {m.isVoice&&<span style={{fontSize:10,padding:"2px 7px",borderRadius:20,background:m.color,color:"white",fontWeight:800,display:"inline-block",marginBottom:4}}>🎙️ Voz</span>}
+              {m.isComingSoon&&<span style={{fontSize:9,padding:"2px 6px",borderRadius:20,background:m.color,color:"white",fontWeight:800,display:"inline-block",marginBottom:4}}>🔧 Pronto</span>}
             </div>
-            <div style={{fontSize:10,color:m.dark+"99",marginTop:4}}>{d}/{m.lessons.length} lecciones</div>
+            {/* Progress bar */}
+            <div style={{width:"100%"}}>
+              {!m.isComingSoon&&<>
+                <div style={{height:7,background:`${m.color}33`,borderRadius:4,overflow:"hidden",marginBottom:3}}>
+                  <div style={{height:"100%",background:m.color,borderRadius:4,width:`${pct*100}%`,transition:"width .5s"}}/>
+                </div>
+                <div style={{fontSize:11,fontWeight:800,color:m.dark+"AA"}}>{d}/{m.lessons.length} lecciones</div>
+              </>}
+            </div>
           </button>;
         })}
       </div>
-
-      {/* Voz — full width */}
-      {[MODULES[4],MODULES[5]].map((m,i)=>{
-        const d=m.lessons.filter(l=>completed.includes(l.id)).length;
-        return <button key={m.id} onClick={()=>!m.isComingSoon&&onSelect(m)}
-          style={{width:"100%",background:m.bg,borderRadius:18,padding:"14px 18px",
-            display:"flex",alignItems:"center",gap:14,textAlign:"left",marginBottom:9,
-            border:`2.5px solid ${m.color}`,borderBottom:`5px solid ${m.dark}`,
-            cursor:m.isComingSoon?"not-allowed":"pointer",
-            opacity:m.isComingSoon?.55:1,
-            animation:`slideUp .45s cubic-bezier(.34,1.56,.64,1) ${(.3+i*.07)}s both`}}
-          onTouchStart={e=>{if(!m.isComingSoon)e.currentTarget.style.transform="translateY(3px)";}}
-          onTouchEnd={e=>{e.currentTarget.style.transform="translateY(0)";}}>
-          <div style={{fontSize:42,animation:"float 2.5s ease-in-out infinite"}}>{m.emoji}</div>
-          <div style={{flex:1}}>
-            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:3,flexWrap:"wrap"}}>
-              <span style={{fontSize:15,fontWeight:900,color:m.dark}}>{m.title}</span>
-              {m.isVoice&&<span style={{fontSize:10,padding:"2px 8px",borderRadius:20,background:m.color,color:"white",fontWeight:800}}>🎙️</span>}
-              {m.isComingSoon&&<span style={{fontSize:10,padding:"2px 8px",borderRadius:20,background:m.color,color:"white",fontWeight:800}}>En construcción</span>}
-            </div>
-            <div style={{fontSize:11,color:m.dark+"99",marginBottom:5}}>{m.desc}</div>
-            {!m.isComingSoon&&<div style={{height:6,background:`${m.color}33`,borderRadius:3,overflow:"hidden"}}>
-              <div style={{height:"100%",background:m.color,borderRadius:3,width:`${m.lessons.length>0?(d/m.lessons.length)*100:0}%`}}/>
-            </div>}
-          </div>
-          {!m.isComingSoon&&<span style={{fontSize:20,fontWeight:900,color:m.color}}>›</span>}
-        </button>;
-      })}
 
       {/* Tip */}
       <div style={{background:"#E8F5E9",border:"2.5px solid #A5D6A7",borderRadius:16,borderBottom:"5px solid #A5D6A7",
